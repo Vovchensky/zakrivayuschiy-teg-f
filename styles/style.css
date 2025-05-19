@@ -111,7 +111,7 @@
 .card__image__watermark {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 10px;
   font-family: var(--main-font);
   font-size: 14px;
   user-select: none;
@@ -139,8 +139,8 @@
   display: flex;
   justify-self: end;
   align-items: center;
-  gap: 12px;
-  margin: 0 25px 25px 0;
+  gap: 5px;
+  margin: 0 20px 23px 0;
   border: none;
   background: none;
 }
@@ -148,7 +148,7 @@
 .button__text {
   width: 130px;
   border: 2px solid var(--accent-color);
-  padding: 10px 0;
+  padding: 9px 0;
   font-family: var(--main-font), sans-serif;
   font-size: 14px;
   text-align: center;
@@ -182,8 +182,13 @@
 }
 
 @media (width <= 375px) {
+  .save-image {
+  transform: scale(1.35);
+}
+
   .save-button {
     flex-direction: column;
+    gap: 16px;
   }
   .save__modal {
   max-width: 341px;
