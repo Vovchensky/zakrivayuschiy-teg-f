@@ -178,11 +178,6 @@ button {
   margin: 0 auto;
 }
 
-.save__modal-icon { 
-  width: 39px;
-  height: 39px;
-}
-
 .diskette-icon {
   width: 21px;
   height: 21px;
@@ -264,16 +259,13 @@ button,
   transition: box-shadow 0.3s ease;
 }
 
-.card__like-button:focus {
+.card__like-button:focus-visible {
   outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
 }
 
 .card__icon-button:focus-visible {
   outline: 2px solid var(--accent-color);
-}
-
-.card__like-button:focus {
-  box-shadow: 2px 2px 0 var(--accent-color);
 }
 
 .save-button:focus-visible,
