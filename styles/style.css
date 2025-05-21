@@ -10,14 +10,24 @@
 
 */
 
-button {
-  display: flex;
+.border {
+  border: 2px solid var(--accent-color);
 }
 
-.hover-color-change {
+.button {
+  background-color: var(--main-color);
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.button__text {
   fill: var(--main-color);
   color: var(--main-color);
   mix-blend-mode: difference;
+  font-size: 14px;
+  font-family: var(--main-font), sans-serif;
 }
 
 .page {
@@ -34,7 +44,7 @@ button {
   font-variation-settings: 'wght' var(--font-weight-body);
 }
 
-.container-width {
+.container {
   width: clamp(23.438rem, 16.285rem + 30.516vi, 43.75rem);
 }
 
@@ -43,7 +53,6 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  border: 2px solid var(--accent-color);
   padding: clamp(7.5rem, 7.324rem + 0.751vi, 8rem) clamp(0.875rem, -1.469rem + 10vi, 7.531rem);
   background-color: var(--main-color);
 }
@@ -66,16 +75,18 @@ button {
   margin-top: 102px;
 }
 
-.card {
-  border: 2px solid var(--accent-color);
+.card-font {
   font-family: var(--accent-font), sans-serif;
   font-size: 18px;
+}
+
+.card {
   background-color: var(--main-color);
 }
 
 .card__title {
   padding: 5px 24px 5px 10px;
-  font-size: 18px;
+  font-size: inherit;
   font-variation-settings: 'wght' var(--font-weight-heading);
 }
 
@@ -125,8 +136,8 @@ button {
 
 .card__image__watermark {
   position: absolute;
-  top: 23px;
-  right: 11px;
+  top: 25px;
+  right: 25px;
   font-family: var(--main-font);
   font-size: 14px;
   user-select: none;
@@ -143,7 +154,7 @@ button {
 .card__description-container {
   display: grid;
   gap: 27px;
-  padding: 25px;
+  padding: 23px 25px;
 }
 
 .card__description {
@@ -166,16 +177,10 @@ button {
 }
 
 .card__like-button {
+  display: flex;
   /* Фиксированная, чтоб кнопка не увеличивалась при тексте "Unlike" */
   width: 130px;
-  border: 2px solid var(--accent-color);
   padding: 10px 0;
-  font-family: var(--main-font), sans-serif;
-  font-size: 14px;
-}
-
-.like__button-text {
-  margin: 0 auto;
 }
 
 .diskette-icon {
@@ -188,10 +193,7 @@ button {
   align-items: center;
   gap: 8px;
   max-width: max-content;
-  margin: 0 auto;
-  border: 2px solid var(--accent-color);
   padding: 14px 21px;
-  background: var(--main-color);
 }
 
 .save-text {
@@ -199,6 +201,11 @@ button {
 }
 
 @media (width <= 375px) {
+
+.card__image__watermark {
+  top: 23px;
+  right: 11px;
+}
 .diskette-icon {
   width: 28px;
   height: 28px;
@@ -243,15 +250,8 @@ button {
 
 .save__close-button {
   width: 100%;
-  border: 2px solid var(--accent-color);
   padding: 10px 0;
-  font-size: 14px;
   text-transform: uppercase;
-  background-color: var(--main-color);
-}
-
-.save__close-button-text {
-  margin: 0 auto;
 }
 
 button,
@@ -259,24 +259,16 @@ button,
   transition: box-shadow 0.3s ease;
 }
 
-.card__like-button:focus-visible {
-  outline: none;
-  box-shadow: 2px 2px 0 var(--accent-color);
-}
-
 .card__icon-button:focus-visible {
   outline: 2px solid var(--accent-color);
 }
 
-.save-button:focus-visible,
-.save__close-button:focus-visible {
+.interactive-effect:focus-visible {
   box-shadow: 2px 2px 0 var(--accent-color);
   outline: none;
 }
 
-.card__like-button:hover::before,
-.save-button:hover::before,
-.save__close-button:hover::before {
+.interactive-effect:hover::before {
   transform: translateX(0%);
 }
 
@@ -304,7 +296,7 @@ button,
 
 .main-body {
   fill: transparent;
-  transition: fill 0.3s 0.05s ease;
+  transition: fill 0.3s ease;
 }
 
 .core {
@@ -320,44 +312,48 @@ button,
 
 .like-icon:hover .core {
   fill: var(--contour-color);
+  transition: fill 0.3s ease;
 }
 
 .like-icon:not(:hover) .core {
-    transition-delay: 0.03s; /* Задержка при уходе курсора */
+  transition-delay: 0.03s; /* Задержка при уходе курсора */
 }
 
 .like-icon:hover .main-body {
   fill: var(--contour-color);
+  transition: fill 0.3s 0.05s ease;
 }
 
 /* :active анимация - всё аналогично с :hover анимацией */
 
 .like-icon:active .core {
   fill: var(--body-color);
+  transition: fill 0.3s 0s ease;
 }
 
 .like-icon:active .main-body {
   fill: var(--body-color);
+  transition: fill 0.3s 0.05s ease;
 }
 
-/* анимация клика - закрашивается сердцевина, далее с задежркой 0.05s основа.
-   После этого с задержкой 0.06s закрашивается контур и далее 2 кейфрейма.
+/*
+  анимация клика - закрашивается сердцевина, далее с задежркой 0.05s основа.
+  После этого с задержкой 0.06s закрашивается контур и далее 2 кейфрейма.
 */
 
 .like-icon.is-liked .core {
   fill: var(--body-color);
+  transition: fill 0.3s 0s ease;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--body-color);
-}
-
-.contour {
-  transition: fill 0.3s 0.06s ease;
+  transition: fill 0.3s 0.05s ease;
 }
 
 .like-icon.is-liked .contour {
   fill: var(--body-color);
+  transition: fill 0.3s 0.06s ease; 
 }
 
 .like-icon.is-liked .heart {
@@ -366,6 +362,12 @@ button,
 
 .like-icon.is-liked .sparks {
   animation: opacityOff 0.3s 0.3s ease-in;
+}
+
+/* перекрашивание контура обратно, когда сердечко выключат */
+
+.contour {
+  transition: fill 0.1s linear;
 }
 
 
