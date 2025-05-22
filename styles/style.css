@@ -15,7 +15,28 @@
 }
 
 .button {
+  position: relative; 
+  overflow: hidden;
   background-color: var(--main-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.button:focus-visible { 
+  box-shadow: 2px 2px 0 var(--accent-color); 
+  outline: none; 
+}
+
+.button:hover::before { 
+  transform: translateX(0%); 
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--accent-color);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
 }
 
 .center {
@@ -186,6 +207,8 @@
 .diskette-icon {
   width: 21px;
   height: 21px;
+  fill: var(--main-color);
+  mix-blend-mode: difference;
 }
 
 .save-button {
@@ -256,40 +279,12 @@
   text-transform: uppercase;
 }
 
-button,
-.card__like-button {
-  transition: box-shadow 0.3s ease;
-}
-
 .card__icon-button:focus-visible {
   outline: 2px solid var(--accent-color);
 }
 
-.interactive-effect:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color);
-  outline: none;
-}
-
 .interactive-effect:hover::before {
   transform: translateX(0%);
-}
-
-.card__like-button,
-.save-button,
-.save__close-button {
-  position: relative;
-  overflow: hidden;
-}
-
-.card__like-button::before,
-.save-button::before,
-.save__close-button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: var(--accent-color);
-  transition: transform 0.5s ease-in-out;
-  transform: translateX(-100%);
 }
 
 .sparks {
